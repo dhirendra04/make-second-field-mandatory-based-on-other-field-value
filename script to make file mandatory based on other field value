@@ -1,0 +1,16 @@
+def Environment=getFieldById("customfield_10041")
+//def Phase_detected=getFieldByName("Phase Detected")
+def Phase_detected=getFieldById("customfield_16211")
+
+//if (Environment.getValue()=="QA")   //beliw line for multy option//
+if (Environment.getValue()=="QA"||Environment.getValue()=="WWW3"||Environment.getValue()=="DR")
+
+{
+    Phase_detected.setHidden(false)
+    Phase_detected.setRequired(true)  
+}
+else
+{
+    Phase_detected.setHidden(true)
+    Phase_detected.setRequired(false)
+}
