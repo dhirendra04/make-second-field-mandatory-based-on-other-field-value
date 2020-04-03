@@ -1,0 +1,25 @@
+//Set RCA mandatory for one issue type in jira project //
+
+import com.atlassian.jira.issue.IssueConstantImpl
+def Field=getFieldById(getFieldChanged())
+def option = Field.getValue() as String
+//Field.setHelpText("$option")
+def RCA = getFieldByName("RCA - Root Cause Analysis")
+def screen = getFieldScreen().name
+if (screen=="Resolve Issue Screen")
+{
+        if (!option.contains("Not a valid defect"))
+    {
+        RCA.setRequired(true)
+        
+        //getFieldByName("comment").setHelpText("$Field")
+    }
+    else
+    {
+        RCA.setRequired(false)
+    }
+}
+else 
+{
+    RCA.setRequired(false)
+}
